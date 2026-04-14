@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule - Bloom</title>
+  <meta name="description" content="Bloom's weekly class timetable — reformer pilates, yoga, and run club sessions in Vinohrady. Find your next class and book online.">
+  <meta property="og:title" content="Schedule - Bloom">
+  <meta property="og:description" content="Bloom's weekly class timetable — reformer pilates, yoga, and run club sessions in Vinohrady. Find your next class and book online.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bloomstudio.cz/schedule.html">
+  <meta property="og:image" content="https://bloomstudio.cz/images/og-bloom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3a3530">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .schedule-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .schedule-filter {
+      border: 1px solid rgba(180, 169, 154, 0.3);
+      background: transparent;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: var(--charcoal);
+    }
+    .schedule-filter:hover:not(.active) {
+      background: var(--charcoal);
+      color: var(--warm-cream);
+      border-color: var(--charcoal);
+    }
+    .schedule-filter.active {
+      background: var(--blush);
+      color: #fff;
+      border-color: var(--blush);
+    }
+
+    .schedule-legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      color: var(--stone);
+    }
+    .schedule-legend__item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .schedule-legend__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .schedule-legend__dot--pilates { background: var(--blush); }
+    .schedule-legend__dot--yoga { background: var(--olive); }
+    .schedule-legend__dot--run { background: var(--taupe); }
+    .schedule-legend__dot--wellness { background: #b8a9c4; }
+
+    .timetable {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 1080px) {
+      .timetable { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .timetable { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    .timetable__day {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 6px;
+    }
+    .timetable__day.is-today {
+      background: rgba(180, 169, 154, 0.06);
+      border-radius: 10px;
+      padding: 6px 6px 10px;
+    }
+    .timetable__day-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      padding: 10px 0;
+      margin-bottom: 2px;
+      color: var(--charcoal);
+      background: rgba(180, 169, 154, 0.08);
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+    }
+    .timetable__day.is-today .timetable__day-name {
+      background: var(--charcoal);
+      color: var(--warm-cream);
+    }
+    .timetable__day.is-today .timetable__day-name::after {
+      content: ' — today';
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .timetable__period {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone);
+      padding: 8px 0 2px;
+      text-align: center;
+      opacity: 0.7;
+    }
+    .timetable__period:first-of-type { padding-top: 4px; }
+
+    .timetable__class {
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      border-left: 3px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+    }
+    .timetable__class:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    .timetable__class[data-type="pilates"] { border-left-color: var(--blush); }
+    .timetable__class[data-type="yoga"] { border-left-color: var(--olive); }
+    .timetable__class[data-type="run"] { border-left-color: var(--taupe); }
+    .timetable__class[data-type="wellness"] { border-left-color: #b8a9c4; }
+
+    .timetable__time {
+      font-size: 12px;
+      color: var(--blush-dark);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .timetable__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin: 2px 0 1px;
+      line-height: 1.25;
+    }
+    .timetable__meta {
+      font-size: 11px;
+      color: var(--stone);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .timetable__class.hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .timetable__day {
+        border-bottom: 1px solid rgba(180, 169, 154, 0.15);
+        padding-bottom: 0;
+      }
+      .timetable__day:last-child { border-bottom: none; }
+      .timetable__day-name {
+        cursor: pointer;
+        position: relative;
+        border-radius: 0;
+        background: transparent;
+        padding: 16px 0;
+        margin-bottom: 0;
+        font-size: 20px;
+      }
+      .timetable__day-name::after {
+        content: '+';
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: var(--stone);
+        transition: transform 0.3s;
+      }
+      .timetable__day.is-today .timetable__day-name {
+        background: transparent;
+        color: var(--charcoal);
+      }
+      .timetable__day.is-today .timetable__day-name::after {
+        content: '+';
+        font-family: 'DM Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        opacity: 1;
+        letter-spacing: 0;
+        text-transform: none;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .timetable__day.open .timetable__day-name::after,
+      .timetable__day.is-today.open .timetable__day-name::after {
+        content: '−';
+      }
+      .timetable__day .timetable__class,
+      .timetable__day .timetable__period {
+        display: none;
+      }
+      .timetable__day.open .timetable__class:not(.hidden) {
+        display: block;
+      }
+      .timetable__day.open .timetable__period {
+        display: block;
+      }
+      .timetable__day.is-today { background: none; padding: 0; border-radius: 0; }
+      .timetable__day.is-today .timetable__day-name {
+        color: var(--blush-dark);
+        font-weight: 700;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <div class="page-loader">
+    <span class="page-loader__brand">Bloom</span>
+  </div>
+
+  <div class="reading-progress"></div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Bloom</a>
+      <ul class="navbar-links">
+        <li class="navbar-dropdown">
+          <button class="navbar-dropdown__toggle">Classes <i class="fa-solid fa-chevron-down"></i></button>
+          <ul class="navbar-dropdown__menu">
+            <li><a href="pilates.html">Reformer Pilates</a></li>
+            <li><a href="yoga.html">Yoga</a></li>
+            <li><a href="runclub.html">Run Club</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+          </ul>
+        </li>
+        <li><a href="spa.html">Spa</a></li>
+        <li><a href="matcha.html">Matcha</a></li>
+        <li><a href="schedule.html" class="active">Schedule</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="index.html#book" class="navbar-cta">Book Free Class</a>
+        <button class="navbar-hamburger" aria-label="Open menu" onclick="this.classList.toggle('active');document.querySelector('.mobile-menu').classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu__links">
+      <li><a href="pilates.html">Pilates</a></li>
+      <li><a href="yoga.html">Yoga</a></li>
+      <li><a href="runclub.html">Run Club</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+    </ul>
+    <span class="mobile-menu__label">Wellness</span>
+    <ul class="mobile-menu__links">
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="matcha.html">Matcha</a></li>
+    </ul>
+    <span class="mobile-menu__label">More</span>
+    <ul class="mobile-menu__links">
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__cta">
+      <a href="index.html#book" class="btn btn-primary">Book Free Class</a>
+    </div>
+    <div class="mobile-menu__bottom">
+      <a href="social.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="social.html"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="social.html"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="social.html"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <div class="page-hero" id="main-content" style="background-image:url('hero-schedule.jpg');">
+    <div class="container">
+      <p class="hero-label">This week</p>
+      <h1>Class Schedule</h1>
+      <p>Plan your week in one glance — from early reformer and flow yoga to evening run club and restorative wind-downs. Pick a time that fits, then book your spot.</p>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="schedule-filters" role="group" aria-label="Filter classes by type">
+        <button type="button" class="schedule-filter active" data-filter="all">All</button>
+        <button type="button" class="schedule-filter" data-filter="pilates">Pilates</button>
+        <button type="button" class="schedule-filter" data-filter="yoga">Yoga</button>
+        <button type="button" class="schedule-filter" data-filter="run">Run Club</button>
+        <button type="button" class="schedule-filter" data-filter="wellness">Wellness</button>
+      </div>
+
+      <div class="schedule-legend" aria-label="Color legend">
+        <span class="schedule-legend__item"><span class="schedule-legend__dot schedule-legend__dot--pilates"></span> Pilates</span>
+        <span class="schedule-legend__item"><span class="schedule-legend__dot schedule-legend__dot--yoga"></span> Yoga</span>
+        <span class="schedule-legend__item"><span class="schedule-legend__dot schedule-legend__dot--run"></span> Run Club</span>
+        <span class="schedule-legend__item"><span class="schedule-legend__dot schedule-legend__dot--wellness"></span> Wellness</span>
+      </div>
+
+      <div class="timetable">
+        <div class="timetable__day">
+          <div class="timetable__day-name">Monday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">6:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">8:00</div>
+            <div class="timetable__name">Flow Yoga</div>
+            <div class="timetable__meta">60 min · Mia</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">9:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Karolina</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">12:00</div>
+            <div class="timetable__name">Mat Pilates</div>
+            <div class="timetable__meta">45 min · Sophie</div>
+          </div>
+          <div class="timetable__period">Evening</div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">17:30</div>
+            <div class="timetable__name">Run Club — Tempo</div>
+            <div class="timetable__meta">60 min · James</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">18:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">19:30</div>
+            <div class="timetable__name">Yin Yoga</div>
+            <div class="timetable__meta">60 min · Lena</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">20:30</div>
+            <div class="timetable__name">Breathwork &amp; Meditation</div>
+            <div class="timetable__meta">30 min · Lena</div>
+          </div>
+        </div>
+
+        <div class="timetable__day">
+          <div class="timetable__day-name">Tuesday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">7:00</div>
+            <div class="timetable__name">Flow Yoga</div>
+            <div class="timetable__meta">60 min · Mia</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">9:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Karolina</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">10:15</div>
+            <div class="timetable__name">Stretch &amp; Mobility</div>
+            <div class="timetable__meta">40 min · Emma</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">12:00</div>
+            <div class="timetable__name">Restorative Yoga</div>
+            <div class="timetable__meta">60 min · Lena</div>
+          </div>
+          <div class="timetable__period">Evening</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">17:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">18:00</div>
+            <div class="timetable__name">Run Club — Easy</div>
+            <div class="timetable__meta">45 min · Lucas</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">19:00</div>
+            <div class="timetable__name">Barre Pilates</div>
+            <div class="timetable__meta">50 min · Sophie</div>
+          </div>
+        </div>
+
+        <div class="timetable__day">
+          <div class="timetable__day-name">Wednesday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">6:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">8:00</div>
+            <div class="timetable__name">Flow Yoga</div>
+            <div class="timetable__meta">60 min · Mia</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">9:30</div>
+            <div class="timetable__name">Breathwork &amp; Meditation</div>
+            <div class="timetable__meta">30 min · Lena</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">12:00</div>
+            <div class="timetable__name">Mat Pilates</div>
+            <div class="timetable__meta">45 min · Sophie</div>
+          </div>
+          <div class="timetable__period">Evening</div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">17:30</div>
+            <div class="timetable__name">Run Club — Intervals</div>
+            <div class="timetable__meta">60 min · James</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">18:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">19:30</div>
+            <div class="timetable__name">Yin Yoga</div>
+            <div class="timetable__meta">60 min · Lena</div>
+          </div>
+        </div>
+
+        <div class="timetable__day">
+          <div class="timetable__day-name">Thursday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">7:00</div>
+            <div class="timetable__name">Flow Yoga</div>
+            <div class="timetable__meta">60 min · Mia</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">9:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Karolina</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">10:15</div>
+            <div class="timetable__name">Barre Pilates</div>
+            <div class="timetable__meta">50 min · Sophie</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">12:00</div>
+            <div class="timetable__name">Restorative Yoga</div>
+            <div class="timetable__meta">60 min · Lena</div>
+          </div>
+          <div class="timetable__period">Evening</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">17:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">18:00</div>
+            <div class="timetable__name">Run Club — Long Run</div>
+            <div class="timetable__meta">75 min · James</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">19:30</div>
+            <div class="timetable__name">Stretch &amp; Mobility</div>
+            <div class="timetable__meta">40 min · Emma</div>
+          </div>
+        </div>
+
+        <div class="timetable__day">
+          <div class="timetable__day-name">Friday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">6:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">8:00</div>
+            <div class="timetable__name">Flow Yoga</div>
+            <div class="timetable__meta">60 min · Mia</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">10:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Karolina</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">12:00</div>
+            <div class="timetable__name">Mat Pilates</div>
+            <div class="timetable__meta">45 min · Sophie</div>
+          </div>
+          <div class="timetable__period">Evening</div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">17:00</div>
+            <div class="timetable__name">Run Club — Tempo</div>
+            <div class="timetable__meta">60 min · Lucas</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">18:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">19:00</div>
+            <div class="timetable__name">Yin Yoga</div>
+            <div class="timetable__meta">60 min · Lena</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">20:00</div>
+            <div class="timetable__name">Breathwork &amp; Meditation</div>
+            <div class="timetable__meta">30 min · Lena</div>
+          </div>
+        </div>
+
+        <div class="timetable__day">
+          <div class="timetable__day-name">Saturday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">8:00</div>
+            <div class="timetable__name">Slow Flow &amp; Restore</div>
+            <div class="timetable__meta">90 min · Mia</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">9:30</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">10:30</div>
+            <div class="timetable__name">Barre Pilates</div>
+            <div class="timetable__meta">50 min · Sophie</div>
+          </div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">11:30</div>
+            <div class="timetable__name">Run Club — Social</div>
+            <div class="timetable__meta">60 min · James</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">13:00</div>
+            <div class="timetable__name">Stretch &amp; Mobility</div>
+            <div class="timetable__meta">40 min · Emma</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">14:00</div>
+            <div class="timetable__name">Reformer Pilates</div>
+            <div class="timetable__meta">50 min · Karolina</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">15:00</div>
+            <div class="timetable__name">Breathwork &amp; Meditation</div>
+            <div class="timetable__meta">30 min · Lena</div>
+          </div>
+        </div>
+
+        <div class="timetable__day">
+          <div class="timetable__day-name">Sunday</div>
+          <div class="timetable__period">Morning</div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">9:00</div>
+            <div class="timetable__name">Restorative Yoga</div>
+            <div class="timetable__meta">60 min · Lena</div>
+          </div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">10:00</div>
+            <div class="timetable__name">Deep Reformer</div>
+            <div class="timetable__meta">75 min · Elena</div>
+          </div>
+          <div class="timetable__class" data-type="yoga">
+            <div class="timetable__time">11:30</div>
+            <div class="timetable__name">Flow Yoga</div>
+            <div class="timetable__meta">60 min · Mia</div>
+          </div>
+          <div class="timetable__period">Afternoon</div>
+          <div class="timetable__class" data-type="pilates">
+            <div class="timetable__time">13:00</div>
+            <div class="timetable__name">Mat Pilates</div>
+            <div class="timetable__meta">45 min · Karolina</div>
+          </div>
+          <div class="timetable__class" data-type="run">
+            <div class="timetable__time">14:00</div>
+            <div class="timetable__name">Run Club — Easy</div>
+            <div class="timetable__meta">45 min · Lucas</div>
+          </div>
+          <div class="timetable__class" data-type="wellness">
+            <div class="timetable__time">15:00</div>
+            <div class="timetable__name">Breathwork &amp; Meditation</div>
+            <div class="timetable__meta">30 min · Lena</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ready to move?</h2>
+        <p>Lock in your favourite slot — your first class is still on us.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="index.html#book" class="btn btn-primary">Book a class</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand__name">Bloom</span>
+          <p>A wellness studio for people who want their workout, recovery, and what they eat afterwards all in one place. Prague 2, Vinohrady.</p>
+          <div class="footer-social">
+            <a href="social.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="social.html" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="social.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="social.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay in the loop</h4>
+          <p>New classes, workshop drops, and the occasional matcha recipe. No spam, ever.</p>
+          <form class="footer-newsletter__form" onsubmit="event.preventDefault();">
+            <input type="email" class="footer-newsletter__input" placeholder="your@email.com" aria-label="Email address">
+            <button type="submit" class="footer-newsletter__btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <a href="pilates.html">Reformer Pilates</a>
+          <a href="yoga.html">Yoga</a>
+          <a href="spa.html">Spa &amp; Recovery</a>
+          <a href="matcha.html">Matcha Bar</a>
+          <a href="runclub.html">Run Club</a>
+          <a href="workshops.html">Workshops</a>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <a href="pricing.html">Pricing &amp; Memberships</a>
+          <a href="schedule.html">Class Schedule</a>
+          <a href="about.html">About Bloom</a>
+          <a href="blog.html">Journal</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <p>Mon - Fri: 6:30 - 21:00</p>
+          <p>Saturday: 8:00 - 18:00</p>
+          <p>Sunday: 9:00 - 16:00</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-location-dot"></i> &nbsp;Vinohradska 42, Prague 2</p>
+          <p><i class="fa-solid fa-envelope"></i> &nbsp;hello@bloomstudio.cz</p>
+          <p><i class="fa-solid fa-phone"></i> &nbsp;+420 774 504 320</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">&copy; 2026 Bloom Studio. All rights reserved.</p>
+        <div class="footer-bottom__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="javascript:void(0)" onclick="localStorage.removeItem('bloom_cookies');document.getElementById('cookieBanner').style.display=''">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a href="index.html#book" class="btn btn-primary" style="width:100%;text-align:center;">Book your free class</a>
+  </div>
+
+  <div class="lightbox" id="lightbox"><button class="lightbox__close" aria-label="Close">&times;</button><img class="lightbox__img" src="" alt=""></div>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function() {
+      var loader = document.querySelector('.page-loader');
+      window.addEventListener('load', function() { loader.classList.add('loaded'); });
+      var navbar = document.querySelector('.navbar');
+      var backToTop = document.querySelector('.back-to-top');
+      var progressBar = document.querySelector('.reading-progress');
+      var mobileCta = document.querySelector('.mobile-cta');
+      var lastScrollY = 0;
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrollY / docHeight) * 100 + '%';
+        navbar.classList.toggle('scrolled', scrollY > 80);
+        backToTop.classList.toggle('visible', scrollY > 600);
+        if (mobileCta) mobileCta.classList.toggle('visible', scrollY > 400);
+        if (scrollY > 300 && scrollY > lastScrollY) { navbar.classList.add('hidden'); } else { navbar.classList.remove('hidden'); }
+        lastScrollY = scrollY;
+      });
+      backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      var animElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .stagger-children');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      animElements.forEach(function(el) { observer.observe(el); });
+      var lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        var lightboxImg = lightbox.querySelector('.lightbox__img');
+        document.querySelectorAll('.photo-grid img').forEach(function(img) {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', function() {
+            lightboxImg.src = this.src;
+            lightboxImg.alt = this.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+        });
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox || e.target.classList.contains('lightbox__close')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+
+      var filters = document.querySelectorAll('.schedule-filter');
+      var classes = document.querySelectorAll('.timetable__class');
+      var periods = document.querySelectorAll('.timetable__period');
+      filters.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          filters.forEach(function(f) { f.classList.remove('active'); });
+          btn.classList.add('active');
+          var type = btn.dataset.filter;
+          classes.forEach(function(c) {
+            if (type === 'all' || c.dataset.type === type) {
+              c.classList.remove('hidden');
+            } else {
+              c.classList.add('hidden');
+            }
+          });
+          periods.forEach(function(p) {
+            if (type === 'all') { p.style.display = ''; return; }
+            var next = p.nextElementSibling;
+            var hasVisible = false;
+            while (next && !next.classList.contains('timetable__period') && !next.classList.contains('timetable__day-name')) {
+              if (next.classList.contains('timetable__class') && !next.classList.contains('hidden')) hasVisible = true;
+              next = next.nextElementSibling;
+            }
+            p.style.display = hasVisible ? '' : 'none';
+          });
+        });
+      });
+
+      var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      var today = dayNames[new Date().getDay()];
+      document.querySelectorAll('.timetable__day').forEach(function(day) {
+        var name = day.querySelector('.timetable__day-name');
+        if (name && name.textContent.trim() === today) {
+          day.classList.add('is-today');
+          day.classList.add('open');
+        }
+      });
+
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        document.querySelectorAll('.timetable__day-name').forEach(function(name) {
+          name.addEventListener('click', function() {
+            var day = name.parentElement;
+            var wasOpen = day.classList.contains('open');
+            document.querySelectorAll('.timetable__day').forEach(function(d) { d.classList.remove('open'); });
+            if (!wasOpen) day.classList.add('open');
+          });
+        });
+      }
+    })();
+  </script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner__inner">
+    <p>We use cookies to improve your experience. By continuing to browse, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-banner__btn cookie-banner__btn--decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+function acceptCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','accepted');}
+function declineCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','declined');}
+if(localStorage.getItem('bloom_cookies')){document.getElementById('cookieBanner').style.display='none';}
+</script>
+
+</body>
+</html>

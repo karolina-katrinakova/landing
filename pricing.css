@@ -1,0 +1,129 @@
+.pricing-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pricing-card {
+  flex: 1;
+  min-width: 260px;
+  max-width: 340px;
+  background: white;
+  border-radius: 4px;
+  padding: 44px 32px;
+  text-align: center;
+  border: 1px solid rgba(180, 169, 154, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--taupe);
+  box-shadow: 0 16px 40px rgba(58, 53, 48, 0.1);
+}
+
+.pricing-card--featured {
+  border: 1px solid var(--charcoal);
+  position: relative;
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--charcoal);
+  color: var(--warm-cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  padding: 5px 20px;
+  border-radius: 0;
+}
+
+.pricing-card__name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--blush);
+  margin: 0 0 10px;
+}
+
+.pricing-card__price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin: 0;
+  line-height: 1;
+}
+
+.pricing-card__price span {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--stone);
+}
+
+.pricing-card__period {
+  font-size: 13px;
+  color: var(--stone);
+  margin: 6px 0 28px;
+}
+
+.pricing-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  text-align: left;
+}
+
+.pricing-card__features li {
+  padding: 10px 0;
+  padding-left: 26px;
+  position: relative;
+  font-size: 14px;
+  color: var(--stone);
+  border-bottom: 1px solid rgba(180, 169, 154, 0.12);
+}
+
+.pricing-card__features li:last-child {
+  border-bottom: none;
+}
+
+.pricing-card__features li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: var(--olive);
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .pricing-card {
+    min-width: 220px;
+    padding: 36px 24px;
+  }
+
+  .pricing-card__price {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricing-card {
+    max-width: 100%;
+    min-width: auto;
+  }
+}

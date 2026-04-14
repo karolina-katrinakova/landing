@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Us - Bloom</title>
+  <meta name="description" content="Bloom's social media is launching soon. Be the first to follow us and watch the studio come to life.">
+  <meta property="og:title" content="Follow Us - Bloom">
+  <meta property="og:description" content="Bloom's social media is launching soon. Be the first to follow us and watch the studio come to life.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bloomstudio.cz/social.html">
+  <meta property="og:image" content="https://bloomstudio.cz/images/og-bloom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3a3530">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .social-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(175deg, var(--warm-cream) 0%, var(--warm-sand) 50%, var(--warm-cream) 100%);
+    }
+
+    .social-hero__brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      opacity: 0.5;
+    }
+
+    .social-hero__tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--blush-dark);
+      margin-bottom: 20px;
+    }
+
+    .social-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin: 0 0 20px;
+      line-height: 1.15;
+    }
+
+    .social-hero__sub {
+      font-size: 18px;
+      color: var(--stone);
+      max-width: 480px;
+      line-height: 1.8;
+      margin: 0 auto 48px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(180, 169, 154, 0.3);
+      color: var(--stone);
+      font-size: 22px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--charcoal);
+      transform: scale(0);
+      transition: transform 0.35s ease;
+    }
+
+    .social-icon:hover::before {
+      transform: scale(1);
+    }
+
+    .social-icon:hover {
+      color: var(--warm-cream);
+      border-color: var(--charcoal);
+    }
+
+    .social-icon i {
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-icon__label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--stone);
+      text-align: center;
+    }
+
+    .social-icon-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--clay);
+      margin: 0 auto 40px;
+    }
+
+    .social-signup {
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .social-signup h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin: 0 0 10px;
+    }
+
+    .social-signup p {
+      font-size: 14px;
+      color: var(--stone);
+      margin: 0 0 24px;
+      line-height: 1.7;
+    }
+
+    .social-signup__form {
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(180, 169, 154, 0.3);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .social-signup__form:focus-within {
+      border-color: var(--blush);
+    }
+
+    .social-signup__input {
+      flex: 1;
+      border: none;
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      background: white;
+      color: var(--charcoal);
+      outline: none;
+    }
+
+    .social-signup__input::placeholder {
+      color: var(--taupe);
+    }
+
+    .social-signup__btn {
+      background: var(--charcoal);
+      border: none;
+      padding: 14px 24px;
+      color: var(--warm-cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .social-signup__btn:hover {
+      background: var(--blush-dark);
+    }
+
+    .social-back {
+      margin-top: 48px;
+    }
+
+    .social-back a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--stone);
+      letter-spacing: 0.5px;
+      transition: color 0.2s ease;
+    }
+
+    .social-back a:hover {
+      color: var(--charcoal);
+    }
+
+    @media (max-width: 768px) {
+      .social-hero h1 {
+        font-size: 38px;
+      }
+
+      .social-hero__sub {
+        font-size: 16px;
+      }
+
+      .social-icons {
+        gap: 12px;
+      }
+
+      .social-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <div class="page-loader">
+    <span class="page-loader__brand">Bloom</span>
+  </div>
+
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Bloom</a>
+      <ul class="navbar-links">
+        <li class="navbar-dropdown">
+          <button class="navbar-dropdown__toggle">Classes <i class="fa-solid fa-chevron-down"></i></button>
+          <ul class="navbar-dropdown__menu">
+            <li><a href="pilates.html">Reformer Pilates</a></li>
+            <li><a href="yoga.html">Yoga</a></li>
+            <li><a href="runclub.html">Run Club</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+          </ul>
+        </li>
+        <li><a href="spa.html">Spa</a></li>
+        <li><a href="matcha.html">Matcha</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="index.html#book" class="navbar-cta">Book Free Class</a>
+        <button class="navbar-hamburger" aria-label="Open menu" onclick="this.classList.toggle('active');document.querySelector('.mobile-menu').classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu__links">
+      <li><a href="pilates.html">Pilates</a></li>
+      <li><a href="yoga.html">Yoga</a></li>
+      <li><a href="runclub.html">Run Club</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+    </ul>
+    <span class="mobile-menu__label">Wellness</span>
+    <ul class="mobile-menu__links">
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="matcha.html">Matcha</a></li>
+    </ul>
+    <span class="mobile-menu__label">More</span>
+    <ul class="mobile-menu__links">
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__cta">
+      <a href="index.html#book" class="btn btn-primary">Book Free Class</a>
+    </div>
+    <div class="mobile-menu__bottom">
+      <a href="social.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="social.html"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="social.html"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="social.html"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <div class="social-hero" id="main-content">
+    <span class="social-hero__brand">Bloom</span>
+    <p class="social-hero__tag">Coming soon</p>
+    <h1>We're building<br>something beautiful</h1>
+    <p class="social-hero__sub">Our social channels are launching soon. Be among the first to follow along — studio moments, class clips, matcha art, and the occasional sunset run through Vinohrady.</p>
+
+    <div class="social-icons">
+      <div class="social-icon-group">
+        <span class="social-icon"><i class="fa-brands fa-instagram"></i></span>
+        <span class="social-icon__label">Instagram</span>
+      </div>
+      <div class="social-icon-group">
+        <span class="social-icon"><i class="fa-brands fa-tiktok"></i></span>
+        <span class="social-icon__label">TikTok</span>
+      </div>
+      <div class="social-icon-group">
+        <span class="social-icon"><i class="fa-brands fa-facebook-f"></i></span>
+        <span class="social-icon__label">Facebook</span>
+      </div>
+      <div class="social-icon-group">
+        <span class="social-icon"><i class="fa-brands fa-youtube"></i></span>
+        <span class="social-icon__label">YouTube</span>
+      </div>
+    </div>
+
+    <div class="social-divider"></div>
+
+    <div class="social-signup">
+      <h3>Get notified when we go live</h3>
+      <p>Drop your email and we'll let you know the moment we post our first photo.</p>
+      <form class="social-signup__form" onsubmit="event.preventDefault();this.querySelector('button').textContent='You\'re in!';">
+        <input type="email" class="social-signup__input" placeholder="your@email.com" aria-label="Email address" required>
+        <button type="submit" class="social-signup__btn">Notify me</button>
+      </form>
+    </div>
+
+    <div class="social-back">
+      <a href="index.html">&larr; Back to Bloom</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var loader = document.querySelector('.page-loader');
+      window.addEventListener('load', function() { loader.classList.add('loaded'); });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+    })();
+  </script>
+
+</body>
+</html>

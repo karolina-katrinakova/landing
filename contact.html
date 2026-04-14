@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Bloom</title>
+  <meta name="description" content="Visit Bloom in Prague 2, Vinohrady. Find our address, hours, and phone, or send us a message about memberships, classes, and studio questions.">
+  <meta property="og:title" content="Contact - Bloom">
+  <meta property="og:description" content="Visit Bloom in Prague 2, Vinohrady. Find our address, hours, and phone, or send us a message about memberships, classes, and studio questions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bloomstudio.cz/contact.html">
+  <meta property="og:image" content="https://bloomstudio.cz/images/og-bloom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3a3530">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    .contact-form-section {
+      --contact-border: rgba(180, 169, 154, 0.3);
+      --contact-border-focus: rgba(120, 98, 78, 0.55);
+    }
+    .contact-form-section h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-section .contact-form__intro {
+      font-family: 'DM Sans', sans-serif;
+      color: rgba(60, 52, 44, 0.85);
+      margin-bottom: 2rem;
+      max-width: 36rem;
+    }
+    .contact-form-section label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(60, 52, 44, 0.9);
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-section .contact-form__field {
+      margin-bottom: 1.25rem;
+    }
+    .contact-form-section input[type="text"],
+    .contact-form-section input[type="email"],
+    .contact-form-section select,
+    .contact-form-section textarea {
+      border: 1px solid var(--contact-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      background: #fff;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease;
+    }
+    .contact-form-section input[type="text"]:focus,
+    .contact-form-section input[type="email"]:focus,
+    .contact-form-section select:focus,
+    .contact-form-section textarea:focus {
+      outline: none;
+      border-color: var(--contact-border-focus);
+    }
+    .contact-form-section textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+    .contact-form-section select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237a6b5c' d='M1 1.5L6 6l5-4.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 44px;
+    }
+    .contact-form-section .contact-form__submit {
+      margin-top: 0.5rem;
+    }
+    .contact-map-wrap iframe {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <div class="page-loader">
+    <span class="page-loader__brand">Bloom</span>
+  </div>
+
+  <div class="reading-progress"></div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Bloom</a>
+      <ul class="navbar-links">
+        <li class="navbar-dropdown">
+          <button class="navbar-dropdown__toggle">Classes <i class="fa-solid fa-chevron-down"></i></button>
+          <ul class="navbar-dropdown__menu">
+            <li><a href="pilates.html">Reformer Pilates</a></li>
+            <li><a href="yoga.html">Yoga</a></li>
+            <li><a href="runclub.html">Run Club</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+          </ul>
+        </li>
+        <li><a href="spa.html">Spa</a></li>
+        <li><a href="matcha.html">Matcha</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="index.html#book" class="navbar-cta">Book Free Class</a>
+        <button class="navbar-hamburger" aria-label="Open menu" onclick="this.classList.toggle('active');document.querySelector('.mobile-menu').classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu__links">
+      <li><a href="pilates.html">Pilates</a></li>
+      <li><a href="yoga.html">Yoga</a></li>
+      <li><a href="runclub.html">Run Club</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+    </ul>
+    <span class="mobile-menu__label">Wellness</span>
+    <ul class="mobile-menu__links">
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="matcha.html">Matcha</a></li>
+    </ul>
+    <span class="mobile-menu__label">More</span>
+    <ul class="mobile-menu__links">
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__cta">
+      <a href="index.html#book" class="btn btn-primary">Book Free Class</a>
+    </div>
+    <div class="mobile-menu__bottom">
+      <a href="social.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="social.html"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="social.html"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="social.html"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <div class="page-hero" id="main-content" style="background-image:url('hero-contact.jpg');">
+    <div class="container">
+      <p class="hero-label">Get in touch</p>
+      <h1>Contact</h1>
+      <p>Whether you are booking your first class, planning a corporate session, or just saying hello, we would love to hear from you. Visit us in Vinohrady or drop us a line below.</p>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="section-split">
+        <div class="section-split__image slide-in-left contact-map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.5!2d14.44!3d50.075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDA0JzMwLjAiTiAxNMKwMjYnMjQuMCJF!5e0!3m2!1sen!2scz!4v1"
+            width="100%"
+            height="400"
+            style="border:0;border-radius:12px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing Bloom studio at Vinohradska 42, Prague 2"></iframe>
+        </div>
+        <div class="section-split__content slide-in-right">
+          <span class="section-label">Visit the studio</span>
+          <h3>Vinohradska 42, Prague 2</h3>
+          <p>We are a short walk from Namesti Miru and easy to reach by tram. Ring the bell at street level and take the lift to our reception.</p>
+          <ul class="feature-list">
+            <li>Vinohradska 42, Prague 2</li>
+            <li><a href="mailto:hello@bloomstudio.cz">hello@bloomstudio.cz</a></li>
+            <li><a href="tel:+420774504320">+420 774 504 320</a></li>
+          </ul>
+          <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;margin:1.5rem 0 0.75rem;font-weight:600;">Opening hours</h4>
+          <ul class="feature-list">
+            <li>Mon &ndash; Fri: 6:30 &ndash; 21:00</li>
+            <li>Saturday: 8:00 &ndash; 18:00</li>
+            <li>Sunday: 9:00 &ndash; 16:00</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--alt fade-in contact-form-section">
+    <div class="container" style="max-width:640px;">
+      <div class="section-header" style="text-align:left;margin-bottom:2rem;">
+        <span class="section-label">Message us</span>
+        <h2>Send a note</h2>
+        <p class="contact-form__intro">Tell us what you need and we will get back within one business day. For urgent booking changes, call us or stop by reception.</p>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();" action="#" method="post">
+        <div class="contact-form__field">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" autocomplete="name" required placeholder="Your name">
+        </div>
+        <div class="contact-form__field">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="contact-form__field">
+          <label for="contact-subject">Subject</label>
+          <select id="contact-subject" name="subject" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="general">General Inquiry</option>
+            <option value="membership">Membership</option>
+            <option value="corporate">Corporate</option>
+            <option value="press">Press</option>
+            <option value="careers">Careers</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="contact-form__field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" required placeholder="How can we help?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary contact-form__submit">Send message</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Quick answers</span>
+        <h2>Questions?</h2>
+        <p>Many common topics &mdash; free first class, memberships, packs, and guest passes &mdash; are covered in our FAQ on the pricing page.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="pricing.html" class="btn btn-outline">Read the FAQ on pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ready to visit?</h2>
+        <p>Book your first class for free and see the studio in person. We will save you a reformer and a matcha.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="index.html#book" class="btn btn-primary">Book your free class</a>
+        <a href="pricing.html" class="btn btn-outline" style="margin-left:16px;">See pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand__name">Bloom</span>
+          <p>A wellness studio for people who want their workout, recovery, and what they eat afterwards all in one place. Prague 2, Vinohrady.</p>
+          <div class="footer-social">
+            <a href="social.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="social.html" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="social.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="social.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay in the loop</h4>
+          <p>New classes, workshop drops, and the occasional matcha recipe. No spam, ever.</p>
+          <form class="footer-newsletter__form" onsubmit="event.preventDefault();">
+            <input type="email" class="footer-newsletter__input" placeholder="your@email.com" aria-label="Email address">
+            <button type="submit" class="footer-newsletter__btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <a href="pilates.html">Reformer Pilates</a>
+          <a href="yoga.html">Yoga</a>
+          <a href="spa.html">Spa &amp; Recovery</a>
+          <a href="matcha.html">Matcha Bar</a>
+          <a href="runclub.html">Run Club</a>
+          <a href="workshops.html">Workshops</a>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <a href="pricing.html">Pricing &amp; Memberships</a>
+          <a href="schedule.html">Class Schedule</a>
+          <a href="about.html">About Bloom</a>
+          <a href="blog.html">Journal</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <p>Mon - Fri: 6:30 - 21:00</p>
+          <p>Saturday: 8:00 - 18:00</p>
+          <p>Sunday: 9:00 - 16:00</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-location-dot"></i> &nbsp;Vinohradska 42, Prague 2</p>
+          <p><i class="fa-solid fa-envelope"></i> &nbsp;hello@bloomstudio.cz</p>
+          <p><i class="fa-solid fa-phone"></i> &nbsp;+420 774 504 320</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">&copy; 2026 Bloom Studio. All rights reserved.</p>
+        <div class="footer-bottom__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="javascript:void(0)" onclick="localStorage.removeItem('bloom_cookies');document.getElementById('cookieBanner').style.display=''">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a href="index.html#book" class="btn btn-primary" style="width:100%;text-align:center;">Book your free class</a>
+  </div>
+
+  <div class="lightbox" id="lightbox"><button class="lightbox__close" aria-label="Close">&times;</button><img class="lightbox__img" src="" alt=""></div>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function() {
+      var loader = document.querySelector('.page-loader');
+      window.addEventListener('load', function() { loader.classList.add('loaded'); });
+      var navbar = document.querySelector('.navbar');
+      var backToTop = document.querySelector('.back-to-top');
+      var progressBar = document.querySelector('.reading-progress');
+      var mobileCta = document.querySelector('.mobile-cta');
+      var lastScrollY = 0;
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrollY / docHeight) * 100 + '%';
+        navbar.classList.toggle('scrolled', scrollY > 80);
+        backToTop.classList.toggle('visible', scrollY > 600);
+        if (mobileCta) mobileCta.classList.toggle('visible', scrollY > 400);
+        if (scrollY > 300 && scrollY > lastScrollY) { navbar.classList.add('hidden'); } else { navbar.classList.remove('hidden'); }
+        lastScrollY = scrollY;
+      });
+      backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      var animEls = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .stagger-children');
+      var animObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      animEls.forEach(function(el) { animObs.observe(el); });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+      var lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        var lightboxImg = lightbox.querySelector('.lightbox__img');
+        document.querySelectorAll('.photo-grid img').forEach(function(img) {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', function() {
+            lightboxImg.src = this.src; lightboxImg.alt = this.alt;
+            lightbox.classList.add('active'); document.body.style.overflow = 'hidden';
+          });
+        });
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox || e.target.classList.contains('lightbox__close')) {
+            lightbox.classList.remove('active'); document.body.style.overflow = '';
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active'); document.body.style.overflow = '';
+          }
+        });
+      }
+    })();
+  </script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner__inner">
+    <p>We use cookies to improve your experience. By continuing to browse, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-banner__btn cookie-banner__btn--decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+function acceptCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','accepted');}
+function declineCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','declined');}
+if(localStorage.getItem('bloom_cookies')){document.getElementById('cookieBanner').style.display='none';}
+</script>
+
+</body>
+</html>

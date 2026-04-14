@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matcha Bar &amp; Kitchen - Bloom</title>
+  <meta name="description" content="Ceremonial-grade matcha from Uji, protein smoothies, and post-workout meals at Bloom's matcha bar and kitchen.">
+  <meta property="og:title" content="Matcha Bar &amp; Kitchen - Bloom">
+  <meta property="og:description" content="Ceremonial-grade matcha from Uji, protein smoothies, and post-workout meals at Bloom's matcha bar and kitchen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bloomstudio.cz/matcha.html">
+  <meta property="og:image" content="https://bloomstudio.cz/images/og-bloom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3a3530">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .matcha-pullquote {
+      text-align: center;
+      padding: 60px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .matcha-pullquote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--charcoal);
+      margin: 0 0 16px;
+    }
+    .matcha-pullquote cite {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-style: normal;
+    }
+
+    .matcha-atmosphere {
+      position: relative;
+      height: 50vh;
+      min-height: 340px;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .matcha-atmosphere::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(58,53,48,0.15);
+    }
+    .matcha-atmosphere__text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--charcoal);
+      padding: 32px 48px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+    .matcha-atmosphere__text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    .matcha-atmosphere__text p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 10px;
+      color: var(--stone);
+    }
+    @media (max-width: 768px) {
+      .matcha-atmosphere {
+        background-attachment: scroll;
+        height: 40vh;
+        min-height: 280px;
+      }
+    }
+
+    .matcha-ceremony {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 480px;
+    }
+    .matcha-ceremony__image {
+      overflow: hidden;
+    }
+    .matcha-ceremony__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .matcha-ceremony__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 56px;
+      background: var(--charcoal);
+      color: var(--warm-cream);
+    }
+    .matcha-ceremony__content .section-label {
+      color: var(--blush);
+    }
+    .matcha-ceremony__content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 400;
+      margin: 8px 0 20px;
+      color: var(--warm-cream);
+    }
+    .matcha-ceremony__content p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(245,240,232,0.8);
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .matcha-ceremony {
+        grid-template-columns: 1fr;
+      }
+      .matcha-ceremony__content {
+        padding: 48px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <div class="page-loader">
+    <span class="page-loader__brand">Bloom</span>
+  </div>
+
+  <div class="reading-progress"></div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Bloom</a>
+      <ul class="navbar-links">
+        <li class="navbar-dropdown">
+          <button class="navbar-dropdown__toggle">Classes <i class="fa-solid fa-chevron-down"></i></button>
+          <ul class="navbar-dropdown__menu">
+            <li><a href="pilates.html">Reformer Pilates</a></li>
+            <li><a href="yoga.html">Yoga</a></li>
+            <li><a href="runclub.html">Run Club</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+          </ul>
+        </li>
+        <li><a href="spa.html">Spa</a></li>
+        <li><a href="matcha.html" class="active">Matcha</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="index.html#book" class="navbar-cta">Book Free Class</a>
+        <button class="navbar-hamburger" aria-label="Open menu" onclick="this.classList.toggle('active');document.querySelector('.mobile-menu').classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu__links">
+      <li><a href="pilates.html">Pilates</a></li>
+      <li><a href="yoga.html">Yoga</a></li>
+      <li><a href="runclub.html">Run Club</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+    </ul>
+    <span class="mobile-menu__label">Wellness</span>
+    <ul class="mobile-menu__links">
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="matcha.html" class="active">Matcha</a></li>
+    </ul>
+    <span class="mobile-menu__label">More</span>
+    <ul class="mobile-menu__links">
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__cta">
+      <a href="index.html#book" class="btn btn-primary">Book Free Class</a>
+    </div>
+    <div class="mobile-menu__bottom">
+      <a href="social.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="social.html"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="social.html"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="social.html"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <div class="page-hero" id="main-content" style="background-image:url('hero-matcha.jpg');">
+    <div class="container">
+      <p class="hero-label">Ritual</p>
+      <h1>Matcha Bar &amp; Kitchen</h1>
+      <p>Ceremonial-grade matcha whisked to order. Post-workout brunch made from scratch. The part of the workout you actually look forward to.</p>
+    </div>
+  </div>
+
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="section-split section-split--reverse">
+        <div class="section-split__image slide-in-right">
+          <img loading="lazy" src="matcha-latte-pair.jpg" alt="Iced matcha latte and hot matcha latte art on a wooden tray at Bloom">
+        </div>
+        <div class="section-split__content slide-in-left">
+          <span class="section-label">Sourced with care</span>
+          <h3>Matcha that actually tastes like matcha</h3>
+          <p>
+            We source our ceremonial-grade matcha directly from a single farm in Uji, Kyoto — the same region that's supplied Japan's tea ceremonies for over 800 years. The powder is stone-ground, air-shipped, and kept refrigerated until it reaches your cup.
+          </p>
+          <p>
+            Every cup is whisked to order by hand. No premixes, no powdered concentrate, no green-coloured sugar water. Hot, iced, or layered with oat milk — you'll taste the difference from the first sip. That vivid, almost electric green? That's what real matcha looks like.
+          </p>
+          <ul class="feature-list">
+            <li>Single-origin from Uji, Kyoto</li>
+            <li>Stone-ground and air-shipped fresh</li>
+            <li>Whisked to order, never premixed</li>
+            <li>Oat, almond, and coconut milk options</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="photo-grid fade-in" style="margin-top:40px;">
+        <img loading="lazy" src="matcha-pour.jpg" alt="Iced matcha being poured over ice at Bloom">
+        <img loading="lazy" src="matcha-chawan.jpg" alt="Matcha being whisked in a handmade chawan at Bloom">
+        <img loading="lazy" src="matcha-chasen.jpg" alt="Bamboo chasen, matcha powder, and steamed milk on a steel tray">
+      </div>
+
+      <h3 class="section-divider">The menu</h3>
+
+      <div class="menu-grid fade-in">
+        <div class="menu-category">
+          <h4>Matcha</h4>
+          <div class="menu-item"><span class="menu-item__name">Traditional matcha (pure, no milk)</span><span class="menu-item__price">&euro;4.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha latte (oat / almond / coconut)</span><span class="menu-item__price">&euro;5.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Iced matcha latte</span><span class="menu-item__price">&euro;5.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha coconut cloud</span><span class="menu-item__price">&euro;6.00</span></div>
+          <div class="menu-item"><span class="menu-item__name">Dirty matcha (matcha + espresso)</span><span class="menu-item__price">&euro;6.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha tonic (sparkling water + matcha)</span><span class="menu-item__price">&euro;5.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha affogato</span><span class="menu-item__price">&euro;6.00</span></div>
+          <div class="menu-item"><span class="menu-item__name">Hojicha latte</span><span class="menu-item__price">&euro;5.50</span></div>
+        </div>
+
+        <div class="menu-category">
+          <h4>Smoothies &amp; Shakes</h4>
+          <div class="menu-item"><span class="menu-item__name">Protein power (banana, peanut butter, whey)</span><span class="menu-item__price">&euro;7.00</span></div>
+          <div class="menu-item"><span class="menu-item__name">Green recovery (spinach, avocado, matcha)</span><span class="menu-item__price">&euro;7.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Berry boost (mixed berries, yoghurt, honey)</span><span class="menu-item__price">&euro;7.00</span></div>
+          <div class="menu-item"><span class="menu-item__name">Tropical glow (mango, passion fruit, coconut)</span><span class="menu-item__price">&euro;7.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha shake (matcha, banana, oat milk, protein)</span><span class="menu-item__price">&euro;7.50</span></div>
+        </div>
+
+        <div class="menu-category">
+          <h4>Kitchen</h4>
+          <div class="menu-item"><span class="menu-item__name">Avocado toast with poached eggs</span><span class="menu-item__price">&euro;9.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Acai bowl with granola and fruit</span><span class="menu-item__price">&euro;10.00</span></div>
+          <div class="menu-item"><span class="menu-item__name">Protein pancakes with maple syrup</span><span class="menu-item__price">&euro;9.00</span></div>
+          <div class="menu-item"><span class="menu-item__name">Grilled chicken and quinoa bowl</span><span class="menu-item__price">&euro;12.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha banana bread (slice)</span><span class="menu-item__price">&euro;4.50</span></div>
+          <div class="menu-item"><span class="menu-item__name">Matcha energy ball (3 pack)</span><span class="menu-item__price">&euro;5.00</span></div>
+        </div>
+      </div>
+
+      <div class="photo-grid fade-in" style="margin-top:30px;">
+        <img loading="lazy" src="matcha2.jpg" alt="Matcha bar atmosphere at Bloom">
+        <img loading="lazy" src="matcha3.jpg" alt="Coffee and treats at Bloom">
+        <img loading="lazy" src="smoothies-weights.jpg" alt="Smoothies and ankle weights by the window at Bloom">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="matcha-ceremony fade-in">
+    <div class="matcha-ceremony__image slide-in-left">
+      <img loading="lazy" src="matcha-flatlay.jpg" alt="Matcha ceremony flat lay — iced matcha, chawan, chasen, and matcha tin on a wooden tray">
+    </div>
+    <div class="matcha-ceremony__content slide-in-right">
+      <span class="section-label">The craft</span>
+      <h3>Every cup is a small ceremony</h3>
+      <p>
+        Bamboo chasen, handmade chawan, sifted powder, 80-degree water. Our baristas don't just make matcha — they prepare it. The whole process takes ninety seconds and it's worth watching every time.
+      </p>
+      <p>
+        We use the same tools and the same method that tea masters in Kyoto have used for centuries. The only difference is we're doing it in Vinohrady, and you can drink it on a reformer. This is the detail that separates a matcha bar from a green latte counter.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="matcha-atmosphere fade-in" style="background-image:url('matcha-atmosphere.jpg');">
+    <div class="matcha-atmosphere__text">
+      <h2>Sip slow. Move well. Come back.</h2>
+      <p>The Bloom ritual</p>
+    </div>
+  </div>
+
+
+  <div class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-split">
+        <div class="section-split__image slide-in-left">
+          <img loading="lazy" src="matcha-counter.jpg" alt="Bloom matcha bar — concrete counter, wooden shelves, ceramic bowls">
+        </div>
+        <div class="section-split__content slide-in-right">
+          <span class="section-label">More than a bar</span>
+          <h3>The gathering place</h3>
+          <p>
+            The matcha bar is the social heart of Bloom. It's where you debrief after a tough reformer
+            class, where run club members swap race stories, and where strangers become friends over a
+            shared acai bowl. Concrete countertops, live-edge shelves lined with handmade ceramics, and the quiet hum of the espresso machine. The communal table seats twelve. The morning light through the arched windows is worth the visit alone.
+          </p>
+          <ul class="feature-list">
+            <li>Communal table for post-class socialising</li>
+            <li>Oat, almond, and coconut milk options</li>
+            <li>All food made fresh in-house daily</li>
+            <li>Vegan, gluten-free, and dairy-free options</li>
+            <li>10% off for All Access members</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="matcha-pullquote fade-in">
+        <blockquote>"I've never been to a pilates studio where the matcha alone was worth the membership."</blockquote>
+        <cite>— Tereza K., member since 2025</cite>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">It's a lifestyle</span>
+        <h2>Pilates, matcha, repeat</h2>
+        <p>At Bloom, the matcha bar isn't an afterthought — it's the other half of the ritual. Grab your iced matcha before class, set it on the reformer, move for 50 minutes, and then come back for brunch. That's the loop.</p>
+      </div>
+
+      <div class="section-split section-split--reverse fade-in">
+        <div class="section-split__image slide-in-right">
+          <img loading="lazy" src="matcha-girl.jpg" alt="Post-class matcha run at Bloom" style="object-position:center 20%;">
+        </div>
+        <div class="section-split__content slide-in-left">
+          <span class="section-label">Fuel your practice</span>
+          <h3>From the reformer to the bar</h3>
+          <p>
+            Every Bloom class comes with a complimentary matcha or protein shake. Members get 10% off the full menu. The bar opens at 6:30 and the kitchen serves until 17:00 — so whether you're an early bird or a post-work mover, your refuel is ready.
+          </p>
+          <ul class="feature-list">
+            <li>Bar opens at 6:30 for early classes</li>
+            <li>Kitchen serves brunch until 17:00</li>
+            <li>Complimentary drink after every class</li>
+            <li>Catering available for private events</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="photo-grid fade-in" style="margin-top:50px;">
+        <img loading="lazy" src="reformer-matcha.jpg" alt="Two matchas on a reformer at Bloom">
+        <img loading="lazy" src="reformer-matcha-top.jpg" alt="Matcha in cup holder on reformer at Bloom">
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2>Hungry after class?</h2>
+        <p>Your complimentary matcha is waiting. Or upgrade to a full post-workout brunch.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="index.html#book" class="btn btn-primary">Book your free class</a>
+        <a href="pricing.html" class="btn btn-outline" style="margin-left:16px;">See pricing</a>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand__name">Bloom</span>
+          <p>A wellness studio for people who want their workout, recovery, and what they eat afterwards all in one place. Prague 2, Vinohrady.</p>
+          <div class="footer-social">
+            <a href="social.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="social.html" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="social.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="social.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay in the loop</h4>
+          <p>New classes, workshop drops, and the occasional matcha recipe. No spam, ever.</p>
+          <form class="footer-newsletter__form" onsubmit="event.preventDefault();">
+            <input type="email" class="footer-newsletter__input" placeholder="your@email.com" aria-label="Email address">
+            <button type="submit" class="footer-newsletter__btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <a href="pilates.html">Reformer Pilates</a>
+          <a href="yoga.html">Yoga</a>
+          <a href="spa.html">Spa &amp; Recovery</a>
+          <a href="matcha.html">Matcha Bar</a>
+          <a href="runclub.html">Run Club</a>
+          <a href="workshops.html">Workshops</a>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <a href="pricing.html">Pricing &amp; Memberships</a>
+          <a href="schedule.html">Class Schedule</a>
+          <a href="about.html">About Bloom</a>
+          <a href="blog.html">Journal</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <p>Mon - Fri: 6:30 - 21:00</p>
+          <p>Saturday: 8:00 - 18:00</p>
+          <p>Sunday: 9:00 - 16:00</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-location-dot"></i> &nbsp;Vinohradska 42, Prague 2</p>
+          <p><i class="fa-solid fa-envelope"></i> &nbsp;hello@bloomstudio.cz</p>
+          <p><i class="fa-solid fa-phone"></i> &nbsp;+420 774 504 320</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">&copy; 2026 Bloom Studio. All rights reserved.</p>
+        <div class="footer-bottom__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="javascript:void(0)" onclick="localStorage.removeItem('bloom_cookies');document.getElementById('cookieBanner').style.display=''">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a href="index.html#book" class="btn btn-primary" style="width:100%;text-align:center;">Book your free class</a>
+  </div>
+
+  <div class="lightbox" id="lightbox"><button class="lightbox__close" aria-label="Close">&times;</button><img class="lightbox__img" src="" alt=""></div>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function() {
+      var loader = document.querySelector('.page-loader');
+      window.addEventListener('load', function() { loader.classList.add('loaded'); });
+      var navbar = document.querySelector('.navbar');
+      var backToTop = document.querySelector('.back-to-top');
+      var progressBar = document.querySelector('.reading-progress');
+      var mobileCta = document.querySelector('.mobile-cta');
+      var lastScrollY = 0;
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrollY / docHeight) * 100 + '%';
+        navbar.classList.toggle('scrolled', scrollY > 80);
+        backToTop.classList.toggle('visible', scrollY > 600);
+        if (mobileCta) mobileCta.classList.toggle('visible', scrollY > 400);
+        if (scrollY > 300 && scrollY > lastScrollY) { navbar.classList.add('hidden'); } else { navbar.classList.remove('hidden'); }
+        lastScrollY = scrollY;
+      });
+      backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      var animElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .stagger-children');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      animElements.forEach(function(el) { observer.observe(el); });
+      var lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        var lightboxImg = lightbox.querySelector('.lightbox__img');
+        document.querySelectorAll('.photo-grid img').forEach(function(img) {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', function() {
+            lightboxImg.src = this.src;
+            lightboxImg.alt = this.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+        });
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox || e.target.classList.contains('lightbox__close')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+    })();
+  </script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner__inner">
+    <p>We use cookies to improve your experience. By continuing to browse, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-banner__btn cookie-banner__btn--decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+function acceptCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','accepted');}
+function declineCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','declined');}
+if(localStorage.getItem('bloom_cookies')){document.getElementById('cookieBanner').style.display='none';}
+</script>
+
+</body>
+</html>

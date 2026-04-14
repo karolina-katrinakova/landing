@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom - Move, Restore, Refuel</title>
+  <meta name="description" content="Bloom is a wellness studio with reformer pilates, yoga, spa, a matcha bar, and a weekly run club. Book your free first class.">
+  <meta property="og:title" content="Bloom - Move, Restore, Refuel">
+  <meta property="og:description" content="Bloom is a wellness studio with reformer pilates, yoga, spa, a matcha bar, and a weekly run club. Book your free first class.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bloomstudio.cz">
+  <meta property="og:image" content="https://bloomstudio.cz/images/og-bloom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3a3530">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Bloom Wellness Studio",
+    "description": "Reformer pilates, yoga, spa, matcha bar, and run club under one roof in Prague's Vinohrady.",
+    "url": "https://bloomstudio.cz",
+    "telephone": "+420774504320",
+    "email": "hello@bloomstudio.cz",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vinohradska 42",
+      "addressLocality": "Prague",
+      "addressRegion": "Prague 2",
+      "postalCode": "120 00",
+      "addressCountry": "CZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.075,
+      "longitude": 14.44
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:30", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "09:00", "closes": "16:00" }
+    ],
+    "priceRange": "$$",
+    "image": "https://bloomstudio.cz/images/og-bloom.jpg",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <div class="page-loader">
+    <span class="page-loader__brand">Bloom</span>
+  </div>
+
+  <div class="announcement-bar" id="announcementBar">
+    <div class="container">
+      <p>Summer memberships are here — <strong>first class free</strong> for all new members. <a href="#book">Book now</a></p>
+      <button class="announcement-bar__close" aria-label="Close" onclick="this.parentElement.parentElement.style.display='none'">&times;</button>
+    </div>
+  </div>
+
+  <div class="reading-progress"></div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Bloom</a>
+      <ul class="navbar-links">
+        <li class="navbar-dropdown">
+          <button class="navbar-dropdown__toggle">Classes <i class="fa-solid fa-chevron-down"></i></button>
+          <ul class="navbar-dropdown__menu">
+            <li><a href="pilates.html">Reformer Pilates</a></li>
+            <li><a href="yoga.html">Yoga</a></li>
+            <li><a href="runclub.html">Run Club</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+          </ul>
+        </li>
+        <li><a href="spa.html">Spa</a></li>
+        <li><a href="matcha.html">Matcha</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="#book" class="navbar-cta">Book Free Class</a>
+        <button class="navbar-hamburger" aria-label="Open menu" onclick="this.classList.toggle('active');document.querySelector('.mobile-menu').classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu__links">
+      <li><a href="pilates.html">Pilates</a></li>
+      <li><a href="yoga.html">Yoga</a></li>
+      <li><a href="runclub.html">Run Club</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+    </ul>
+    <span class="mobile-menu__label">Wellness</span>
+    <ul class="mobile-menu__links">
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="matcha.html">Matcha</a></li>
+    </ul>
+    <span class="mobile-menu__label">More</span>
+    <ul class="mobile-menu__links">
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__cta">
+      <a href="#book" class="btn btn-primary">Book Free Class</a>
+    </div>
+    <div class="mobile-menu__bottom">
+      <a href="social.html"><i class="fa-brands fa-instagram"></i></a>
+      <a href="social.html"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="social.html"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="social.html"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <div class="banner" id="main-content">
+    <div class="container">
+      <p class="hero-label">Bloom Wellness Studio</p>
+      <h1>
+        <span class="hero-line">Move.</span>
+        <span class="hero-line hero-line--italic">Restore.</span>
+        <span class="hero-line">Refuel.</span>
+      </h1>
+      <div class="hero-rule"></div>
+      <h2>Reformer pilates, yoga, spa, and a matcha bar under one roof.<br>Your first class is free.</h2>
+      <div class="hero-buttons">
+        <a href="#book" class="btn btn-primary" style="background:white;color:var(--charcoal);">Book your free class</a>
+        <a href="#about" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.4);color:white;">Explore Bloom</a>
+      </div>
+    </div>
+    <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+      <span class="scroll-indicator__line"></span>
+    </a>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee__inner">
+      <span class="marquee__item">Reformer Pilates</span>
+      <span class="marquee__item">Flow Yoga</span>
+      <span class="marquee__item">Infrared Sauna</span>
+      <span class="marquee__item">Matcha Bar</span>
+      <span class="marquee__item">Run Club</span>
+      <span class="marquee__item">Deep Tissue Massage</span>
+      <span class="marquee__item">Cold Plunge</span>
+      <span class="marquee__item">Workshops</span>
+      <span class="marquee__item">Reformer Pilates</span>
+      <span class="marquee__item">Flow Yoga</span>
+      <span class="marquee__item">Infrared Sauna</span>
+      <span class="marquee__item">Matcha Bar</span>
+      <span class="marquee__item">Run Club</span>
+      <span class="marquee__item">Deep Tissue Massage</span>
+      <span class="marquee__item">Cold Plunge</span>
+      <span class="marquee__item">Workshops</span>
+    </div>
+  </div>
+
+
+  <div id="about" class="section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Welcome to Bloom</span>
+        <h2>Where movement meets recovery</h2>
+        <p>
+          We built Bloom around a simple idea: your workout, your recovery, and what you eat
+          afterwards all belong in the same place. No more rushing between a pilates studio, a spa,
+          and a cafe. Everything you need is here.
+        </p>
+      </div>
+
+      <div class="cards stagger-children">
+        <a href="pilates.html" class="card">
+          <img loading="lazy" src="reformer-arch.jpg" alt="Reformer Pilates at Bloom">
+          <h3>Reformer Pilates</h3>
+        </a>
+        <a href="yoga.html" class="card">
+          <img loading="lazy" src="yoga-mats-arch.jpg" alt="Yoga at Bloom">
+          <h3>Yoga</h3>
+        </a>
+        <a href="spa.html" class="card">
+          <img loading="lazy" src="spa3.jpg" alt="Spa at Bloom">
+          <h3>Spa &amp; Recovery</h3>
+        </a>
+        <a href="matcha.html" class="card">
+          <img loading="lazy" src="matcha.jpg" alt="Matcha Bar at Bloom">
+          <h3>Matcha Bar</h3>
+        </a>
+        <a href="runclub.html" class="card">
+          <img loading="lazy" src="runclub3.jpg" alt="Bloom Run Club" style="object-position:center 15%;">
+          <h3>Run Club</h3>
+        </a>
+        <a href="workshops.html" class="card">
+          <img loading="lazy" src="matcha-workshop.jpg" alt="Workshops at Bloom">
+          <h3>Workshops</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Our space</span>
+        <h2>Designed to make you stay</h2>
+        <p>Warm materials, natural light, and thoughtful details in every corner. Bloom feels less like a studio and more like a place you actually want to spend time in.</p>
+      </div>
+
+      <div class="section-split">
+        <div class="section-split__image slide-in-left">
+          <img loading="lazy" src="bloom-studio-interior.jpg" alt="Bloom reformer studio — arched windows, linen curtains, concrete floors, olive tree">
+        </div>
+        <div class="section-split__content slide-in-right">
+          <span class="section-label">Architecture &amp; interiors</span>
+          <h3>Every detail is intentional</h3>
+          <p>
+            Concrete floors, linen curtains, arched mirrors, and olive trees. We worked with a Prague-based
+            architecture studio to create a space that feels calm and warm from the moment you walk in. The
+            reformer studio has floor-to-ceiling windows. The yoga room is lit by candles. The matcha bar
+            is where everyone gathers after class.
+          </p>
+          <ul class="feature-list">
+            <li>Prague 2, Vinohrady neighbourhood</li>
+            <li>850 m&sup2; across two floors</li>
+            <li>Changing rooms with rainfall showers</li>
+            <li>Rooftop terrace for summer events</li>
+            <li>Free filtered water stations throughout</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="photo-grid fade-in" style="margin-top:50px;">
+        <img loading="lazy" src="yoga2.jpg" alt="Yoga practice at Bloom" style="object-position:center 40%;">
+        <img loading="lazy" src="spa.jpg" alt="Bloom spa atmosphere">
+        <img loading="lazy" src="matcha2.jpg" alt="Matcha preparation at Bloom">
+      </div>
+
+      <div class="photo-grid fade-in" style="margin-top:30px;">
+        <img loading="lazy" src="reformer-arches.jpg" alt="Reformer studio with arched mirrors at Bloom">
+        <img loading="lazy" src="matcha-girl.jpg" alt="Post-class matcha at Bloom" style="object-position:center 25%;">
+        <img loading="lazy" src="yoga-arch-studio.jpg" alt="Yoga studio with arch lighting at Bloom">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The ritual</span>
+        <h2>Pilates, matcha, repeat</h2>
+        <p>Bloom is built around a daily loop: move, recover, refuel. Grab your matcha, warm up on the reformer, push through class, then sit down for brunch with friends. It all happens here.</p>
+      </div>
+
+      <div class="section-split section-split--reverse fade-in">
+        <div class="section-split__image slide-in-right">
+          <img loading="lazy" src="reformer-props.jpg" alt="Pilates ring and matcha on a reformer at Bloom">
+        </div>
+        <div class="section-split__content slide-in-left">
+          <span class="section-label">More than a studio</span>
+          <h3>Where fitness meets lifestyle</h3>
+          <p>
+            Every class comes with a complimentary matcha or protein shake. The matcha bar is steps from the studio, so you're sipping before the sweat even dries. After class, stay for an acai bowl, book a massage, or just sit in the sun on the terrace. Most people plan to stay an hour. They stay three.
+          </p>
+        </div>
+      </div>
+
+      <div class="photo-grid fade-in" style="margin-top:50px;">
+        <img loading="lazy" src="reformer-matcha-top.jpg" alt="Matcha on the reformer from above at Bloom">
+        <img loading="lazy" src="yoga-stretch.jpg" alt="Yoga stretch in warm golden light at Bloom">
+        <img loading="lazy" src="matcha-socks.jpg" alt="Matcha and pilates accessories at Bloom">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Why Bloom</span>
+        <h2>Everything in one place</h2>
+        <p>Most studios do one thing. We built a place where your workout, your recovery, and your post-class ritual all happen under the same roof.</p>
+      </div>
+
+      <div class="perks stagger-children">
+        <div class="perk fade-in">
+          <div class="perk__icon"><i class="fa-solid fa-dumbbell"></i></div>
+          <h4>Train smarter</h4>
+          <p>Reformer pilates and yoga in the same studio. Mix and match based on how your body feels, not which gym you signed up for.</p>
+        </div>
+        <div class="perk fade-in">
+          <div class="perk__icon"><i class="fa-solid fa-spa"></i></div>
+          <h4>Recover after every session</h4>
+          <p>Infrared sauna, cold plunge, and massage are steps away from the studio. Recovery is not a separate trip — it is part of the visit.</p>
+        </div>
+        <div class="perk fade-in">
+          <div class="perk__icon"><i class="fa-solid fa-mug-hot"></i></div>
+          <h4>Matcha on us</h4>
+          <p>Every class comes with a complimentary matcha. Or stay longer — the kitchen serves acai bowls, protein smoothies, and proper food.</p>
+        </div>
+        <div class="perk fade-in">
+          <div class="perk__icon"><i class="fa-solid fa-people-group"></i></div>
+          <h4>Community, not a membership card</h4>
+          <p>Run club is free for everyone. Workshops are open to non-members. Bloom is a place where people actually want to hang out.</p>
+        </div>
+        <div class="perk fade-in">
+          <div class="perk__icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <h4>No contracts, ever</h4>
+          <p>Month-to-month memberships, class packs, or single drop-ins. Cancel anytime. Your first class is always free.</p>
+        </div>
+        <div class="perk fade-in">
+          <div class="perk__icon"><i class="fa-solid fa-shower"></i></div>
+          <h4>Designed for your morning</h4>
+          <p>Rainfall showers, hair dryers, toiletries, and towels. Come before work, leave ready for the day. No gym bag required.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section section--alt fade-in" style="padding: 70px 0;">
+    <div class="container">
+      <div class="stats stagger-children">
+        <div class="stat">
+          <div class="stat__number" data-target="2000">0</div>
+          <div class="stat__label">Active members</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-target="50">0</div>
+          <div class="stat__label">Classes per week</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-target="8">0</div>
+          <div class="stat__label">Expert instructors</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-target="12">0</div>
+          <div class="stat__label">Matcha varieties</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="team" class="section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The team</span>
+        <h2>Meet our instructors</h2>
+        <p>Every instructor at Bloom is certified, experienced, and genuinely passionate about helping you move better.</p>
+      </div>
+
+      <div class="team stagger-children">
+        <div class="team-member">
+          <img loading="lazy" src="team-karolina.jpg" alt="Karolina" class="avatar-large">
+          <h3>Karolina</h3>
+          <p>Founder &amp; Reformer Pilates</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-emma.jpg" alt="Emma" class="avatar-large">
+          <h3>Emma</h3>
+          <p>Yoga &amp; Meditation</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-mia.jpg" alt="Mia" class="avatar-large">
+          <h3>Mia</h3>
+          <p>Spa &amp; Recovery</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-lucas.jpg" alt="Lucas" class="avatar-large">
+          <h3>Lucas</h3>
+          <p>Run Club &amp; Strength</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-sophie.jpg" alt="Sophie" class="avatar-large">
+          <h3>Sophie</h3>
+          <p>Matcha Bar Manager</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-elena.jpg" alt="Elena" class="avatar-large">
+          <h3>Elena</h3>
+          <p>Head Pilates Instructor</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-lena.jpg" alt="Lena" class="avatar-large">
+          <h3>Lena</h3>
+          <p>Yoga &amp; Breathwork</p>
+        </div>
+        <div class="team-member">
+          <img loading="lazy" src="team-james.jpg" alt="James" class="avatar-large">
+          <h3>James</h3>
+          <p>Run Club Coach</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="marquee" style="background: var(--warm-sand);">
+    <div class="marquee__inner">
+      <span class="marquee__item" style="color: var(--stone);">Your first class is free</span>
+      <span class="marquee__item" style="color: var(--stone);">No contracts</span>
+      <span class="marquee__item" style="color: var(--stone);">Cancel anytime</span>
+      <span class="marquee__item" style="color: var(--stone);">Matcha on us after class</span>
+      <span class="marquee__item" style="color: var(--stone);">Open 7 days a week</span>
+      <span class="marquee__item" style="color: var(--stone);">Guest passes available</span>
+      <span class="marquee__item" style="color: var(--stone);">Your first class is free</span>
+      <span class="marquee__item" style="color: var(--stone);">No contracts</span>
+      <span class="marquee__item" style="color: var(--stone);">Cancel anytime</span>
+      <span class="marquee__item" style="color: var(--stone);">Matcha on us after class</span>
+      <span class="marquee__item" style="color: var(--stone);">Open 7 days a week</span>
+      <span class="marquee__item" style="color: var(--stone);">Guest passes available</span>
+    </div>
+  </div>
+
+
+  <div id="testimonials" class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What people say</span>
+        <h2>Loved by our community</h2>
+      </div>
+    </div>
+
+    <div class="testimonial-slider">
+      <div class="testimonial-slider__track">
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-card__text">"I tried reformer pilates for the first time at Bloom and now I go three times a week. The instructors are incredible, the studio is beautiful, and the matcha afterwards is the best part of my day."</p>
+          <div class="testimonial-card__author">
+            <img loading="lazy" src="review-anna.jpg" alt="Anna K.">
+            <div><p class="testimonial-card__name">Anna K.</p><p class="testimonial-card__role">Member since 2025</p></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-card__text">"The run club is what got me in the door, but I stayed for everything else. The community here is something special. It does not feel like a gym. It feels like a place where people actually want to be."</p>
+          <div class="testimonial-card__author">
+            <img loading="lazy" src="review-tomas.jpg" alt="Tomas R.">
+            <div><p class="testimonial-card__name">Tomas R.</p><p class="testimonial-card__role">Run Club regular</p></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-card__text">"Bloom is the only place where I can do a yoga class, get a massage, and have the best matcha in the city, all without leaving the building. I genuinely look forward to coming here every single week."</p>
+          <div class="testimonial-card__author">
+            <img loading="lazy" src="review-lisa.jpg" alt="Lisa M.">
+            <div><p class="testimonial-card__name">Lisa M.</p><p class="testimonial-card__role">Member since 2024</p></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-card__text">"The Sunday deep reformer class is my non-negotiable. Seventy-five minutes of pure focus. I have never felt stronger or more centred. And the fact that I can grab a matcha and sit in the sauna afterwards? Unreal."</p>
+          <div class="testimonial-card__author">
+            <img loading="lazy" src="review-sara.jpg" alt="Sara D.">
+            <div><p class="testimonial-card__name">Sara D.</p><p class="testimonial-card__role">Pilates &amp; Spa regular</p></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-card__text">"I signed up for the matcha workshop on a whim and it completely changed how I think about tea. The team really knows their craft. Now I come for the Thursday long run and stay for a hojicha latte."</p>
+          <div class="testimonial-card__author">
+            <img loading="lazy" src="review-jakub.jpg" alt="Jakub N.">
+            <div><p class="testimonial-card__name">Jakub N.</p><p class="testimonial-card__role">Workshop attendee</p></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testimonial-card__text">"I was nervous about trying pilates because I had a back injury. Karolina made me feel completely safe from the first class. Six months later my physio cannot believe the progress. Bloom changed my life, genuinely."</p>
+          <div class="testimonial-card__author">
+            <img loading="lazy" src="review-petra.jpg" alt="Petra V.">
+            <div><p class="testimonial-card__name">Petra V.</p><p class="testimonial-card__role">Member since 2025</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="testimonial-slider__nav">
+      <button class="testimonial-slider__btn testimonial-slider__btn--prev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+      <div class="testimonial-slider__dots"></div>
+      <button class="testimonial-slider__btn testimonial-slider__btn--next" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+
+  <div class="gallery-strip fade-in">
+    <div class="gallery-strip__track">
+      <img loading="lazy" src="reformer-bright.jpg" alt="Reformer studio at Bloom" class="gallery-strip__img">
+      <img loading="lazy" src="yoga-mats-arch.jpg" alt="Yoga studio at Bloom" class="gallery-strip__img">
+      <img loading="lazy" src="matcha-girl.jpg" alt="Matcha lifestyle at Bloom" class="gallery-strip__img" style="object-position:center 20%;">
+      <img loading="lazy" src="reformer-row.jpg" alt="Reformer row at Bloom" class="gallery-strip__img">
+      <img loading="lazy" src="towel-shelf.jpg" alt="Spa amenities at Bloom" class="gallery-strip__img">
+      <img loading="lazy" src="yoga-stretch.jpg" alt="Yoga at Bloom" class="gallery-strip__img">
+      <img loading="lazy" src="reformer-wavy.jpg" alt="Studio mirrors at Bloom" class="gallery-strip__img">
+    </div>
+  </div>
+
+
+  <div id="pricing" class="section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Membership</span>
+        <h2>Simple, honest pricing</h2>
+        <p>No contracts, no hidden fees. Cancel anytime. Memberships from &euro;79/mo, single classes from &euro;28, or buy a class pack.</p>
+      </div>
+
+      <div class="pricing-grid stagger-children">
+        <div class="pricing-card">
+          <p class="pricing-card__name">Essential</p>
+          <p class="pricing-card__price">&euro;79<span>/mo</span></p>
+          <p class="pricing-card__period">3 classes per week</p>
+          <ul class="pricing-card__features">
+            <li>Reformer pilates or yoga</li>
+            <li>Matcha bar &amp; run club</li>
+            <li>Towel service</li>
+          </ul>
+          <a href="#book" class="btn btn-secondary" style="width:100%;text-align:center;">Get started</a>
+        </div>
+
+        <div class="pricing-card pricing-card--featured">
+          <span class="pricing-card__badge">Most popular</span>
+          <p class="pricing-card__name">Unlimited</p>
+          <p class="pricing-card__price">&euro;119<span>/mo</span></p>
+          <p class="pricing-card__period">Unlimited classes</p>
+          <ul class="pricing-card__features">
+            <li>Unlimited pilates, yoga &amp; run club</li>
+            <li>1 spa treatment per month</li>
+            <li>Priority booking &amp; guest pass</li>
+          </ul>
+          <a href="#book" class="btn btn-primary" style="width:100%;text-align:center;">Get started</a>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-card__name">All Access</p>
+          <p class="pricing-card__price">&euro;169<span>/mo</span></p>
+          <p class="pricing-card__period">Everything, unlimited</p>
+          <ul class="pricing-card__features">
+            <li>Unlimited classes &amp; spa</li>
+            <li>Weekly massage included</li>
+            <li>10% off matcha bar</li>
+          </ul>
+          <a href="#book" class="btn btn-secondary" style="width:100%;text-align:center;">Get started</a>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:40px;">
+        <a href="pricing.html" class="btn btn-secondary">View all pricing, class packs &amp; gift cards &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="book" class="section section--alt fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Get started</span>
+        <h2>Book your free first class</h2>
+        <p>Your first class is completely free. Pick a time that works for you and we will take care of the rest. Matcha is on us after.</p>
+      </div>
+      <div data-tf-live="01KNSB5NG8AWMVEDPXD9RRX8QE" style="width:100%;height:500px;"></div>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand__name">Bloom</span>
+          <p>A wellness studio for people who want their workout, recovery, and what they eat afterwards all in one place. Prague 2, Vinohrady.</p>
+          <div class="footer-social">
+            <a href="social.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="social.html" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="social.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="social.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay in the loop</h4>
+          <p>New classes, workshop drops, and the occasional matcha recipe. No spam, ever.</p>
+          <form class="footer-newsletter__form" onsubmit="event.preventDefault();">
+            <input type="email" class="footer-newsletter__input" placeholder="your@email.com" aria-label="Email address">
+            <button type="submit" class="footer-newsletter__btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <a href="pilates.html">Reformer Pilates</a>
+          <a href="yoga.html">Yoga</a>
+          <a href="spa.html">Spa &amp; Recovery</a>
+          <a href="matcha.html">Matcha Bar</a>
+          <a href="runclub.html">Run Club</a>
+          <a href="workshops.html">Workshops</a>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <a href="pricing.html">Pricing &amp; Memberships</a>
+          <a href="schedule.html">Class Schedule</a>
+          <a href="about.html">About Bloom</a>
+          <a href="blog.html">Journal</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <p>Mon - Fri: 6:30 - 21:00</p>
+          <p>Saturday: 8:00 - 18:00</p>
+          <p>Sunday: 9:00 - 16:00</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-location-dot"></i> &nbsp;Vinohradska 42, Prague 2</p>
+          <p><i class="fa-solid fa-envelope"></i> &nbsp;hello@bloomstudio.cz</p>
+          <p><i class="fa-solid fa-phone"></i> &nbsp;+420 774 504 320</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">&copy; 2026 Bloom Studio. All rights reserved.</p>
+        <div class="footer-bottom__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="javascript:void(0)" onclick="localStorage.removeItem('bloom_cookies');document.getElementById('cookieBanner').style.display=''">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a href="#book" class="btn btn-primary" style="width:100%;text-align:center;">Book your free class</a>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <img class="lightbox__img" src="" alt="">
+  </div>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function() {
+      var loader = document.querySelector('.page-loader');
+      window.addEventListener('load', function() { loader.classList.add('loaded'); });
+
+      var navbar = document.querySelector('.navbar');
+      var backToTop = document.querySelector('.back-to-top');
+      var progressBar = document.querySelector('.reading-progress');
+      var mobileCta = document.querySelector('.mobile-cta');
+      var lastScrollY = 0;
+
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrollY / docHeight) * 100 + '%';
+        navbar.classList.toggle('scrolled', scrollY > 80);
+        backToTop.classList.toggle('visible', scrollY > 600);
+        if (mobileCta) mobileCta.classList.toggle('visible', scrollY > 400);
+
+        if (scrollY > 300 && scrollY > lastScrollY) {
+          navbar.classList.add('hidden');
+        } else {
+          navbar.classList.remove('hidden');
+        }
+        lastScrollY = scrollY;
+      });
+
+      backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+      var animElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .stagger-children');
+      var animObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      animElements.forEach(function(el) { animObserver.observe(el); });
+
+      var statNumbers = document.querySelectorAll('.stat__number[data-target]');
+      var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var target = parseInt(el.dataset.target);
+          var duration = 1200;
+          var start = performance.now();
+          function update(now) {
+            var progress = Math.min((now - start) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(ease * target) + '+';
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          statsObserver.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      statNumbers.forEach(function(el) { statsObserver.observe(el); });
+
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImg = lightbox.querySelector('.lightbox__img');
+      document.querySelectorAll('.photo-grid img, .gallery-strip__img').forEach(function(img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox || e.target.classList.contains('lightbox__close')) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      var galleryTrack = document.querySelector('.gallery-strip__track');
+      if (galleryTrack) {
+        var isDown = false, startX, scrollLeft;
+        galleryTrack.addEventListener('pointerdown', function(e) {
+          isDown = true; startX = e.pageX - galleryTrack.offsetLeft; scrollLeft = galleryTrack.scrollLeft;
+          galleryTrack.classList.add('grabbing');
+          galleryTrack.setPointerCapture(e.pointerId);
+        });
+        galleryTrack.addEventListener('pointerup', function() { isDown = false; galleryTrack.classList.remove('grabbing'); });
+        galleryTrack.addEventListener('pointermove', function(e) {
+          if (!isDown) return; e.preventDefault();
+          var x = e.pageX - galleryTrack.offsetLeft;
+          galleryTrack.scrollLeft = scrollLeft - (x - startX);
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var track = document.querySelector('.testimonial-slider__track');
+      var cards = document.querySelectorAll('.testimonial-card');
+      var prevBtn = document.querySelector('.testimonial-slider__btn--prev');
+      var nextBtn = document.querySelector('.testimonial-slider__btn--next');
+      var dotsContainer = document.querySelector('.testimonial-slider__dots');
+      if (!track || !cards.length) return;
+
+      var currentIndex = 0;
+      var autoplayInterval = null;
+
+      function getVisible() { var w = window.innerWidth; if (w <= 768) return 1; if (w <= 1024) return 2; return 3; }
+      function getMaxIndex() { return Math.max(0, cards.length - getVisible()); }
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (var i = 0; i <= getMaxIndex(); i++) {
+          var dot = document.createElement('button');
+          dot.className = 'testimonial-slider__dot' + (i === currentIndex ? ' active' : '');
+          dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+          dot.dataset.index = i;
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function slideTo(index) {
+        currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+        var cardWidth = cards[0].offsetWidth + 24;
+        track.style.transform = 'translateX(' + (-currentIndex * cardWidth) + 'px)';
+        dotsContainer.querySelectorAll('.testimonial-slider__dot').forEach(function(d, i) { d.classList.toggle('active', i === currentIndex); });
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(function() {
+          var next = currentIndex + 1;
+          if (next > getMaxIndex()) next = 0;
+          slideTo(next);
+        }, 5000);
+      }
+
+      function stopAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+      }
+
+      prevBtn.addEventListener('click', function() { slideTo(currentIndex - 1); stopAutoplay(); startAutoplay(); });
+      nextBtn.addEventListener('click', function() { slideTo(currentIndex + 1); stopAutoplay(); startAutoplay(); });
+      dotsContainer.addEventListener('click', function(e) {
+        var dot = e.target.closest('.testimonial-slider__dot');
+        if (dot) { slideTo(parseInt(dot.dataset.index)); stopAutoplay(); startAutoplay(); }
+      });
+
+      var startX = 0, moveX = 0, dragging = false;
+      track.addEventListener('pointerdown', function(e) { dragging = true; startX = e.clientX; moveX = 0; track.classList.add('grabbing'); track.setPointerCapture(e.pointerId); stopAutoplay(); });
+      track.addEventListener('pointermove', function(e) { if (!dragging) return; moveX = e.clientX - startX; track.style.transform = 'translateX(' + (-currentIndex * (cards[0].offsetWidth + 24) + moveX) + 'px)'; });
+      track.addEventListener('pointerup', function() {
+        if (!dragging) return;
+        dragging = false;
+        track.classList.remove('grabbing');
+        if (moveX < -60) slideTo(currentIndex + 1);
+        else if (moveX > 60) slideTo(currentIndex - 1);
+        else slideTo(currentIndex);
+        startAutoplay();
+      });
+
+      buildDots();
+      startAutoplay();
+      window.addEventListener('resize', function() { buildDots(); slideTo(Math.min(currentIndex, getMaxIndex())); });
+    })();
+  </script>
+
+  <div class="intro-offer" id="introOffer">
+    <div class="intro-offer__overlay"></div>
+    <div class="intro-offer__card">
+      <button class="intro-offer__close" aria-label="Close" onclick="closeIntroOffer()">&times;</button>
+      <span class="intro-offer__label">Welcome to Bloom</span>
+      <h3 class="intro-offer__title">Your first class is free</h3>
+      <p class="intro-offer__text">Try any reformer pilates or yoga class on us. No commitment, no card required. Just show up and move.</p>
+      <a href="#book" class="btn btn-primary" style="width:100%;text-align:center;" onclick="closeIntroOffer()">Book your free class</a>
+      <p class="intro-offer__note">Valid for first-time visitors only</p>
+    </div>
+  </div>
+<script>
+function closeIntroOffer(){document.getElementById('introOffer').classList.remove('active');document.body.style.overflow='';sessionStorage.setItem('bloom_intro','seen');}
+if(!sessionStorage.getItem('bloom_intro')){setTimeout(function(){document.getElementById('introOffer').classList.add('active');document.body.style.overflow='hidden';},3000);}
+document.querySelector('.intro-offer__overlay').addEventListener('click',closeIntroOffer);
+</script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner__inner">
+    <p>We use cookies to improve your experience. By continuing to browse, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-banner__btn cookie-banner__btn--decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+function acceptCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','accepted');}
+function declineCookies(){document.getElementById('cookieBanner').style.display='none';localStorage.setItem('bloom_cookies','declined');}
+if(localStorage.getItem('bloom_cookies')){document.getElementById('cookieBanner').style.display='none';}
+</script>
+
+</body>
+</html>
